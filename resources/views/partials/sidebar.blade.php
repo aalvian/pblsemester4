@@ -26,6 +26,8 @@
         Data
     </div>
 
+
+    @role('pengurus')
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item @if(request()->routeIs('pendaftaran', 'detail-terima', 'detail-tolak', 'detail-pendaftaran')) active @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -41,30 +43,44 @@
             </div>
         </div>
     </li>
+    @endrole
 
+    {{-- @role('admin|pengurus') --}}
     <li class="nav-item @if(request()->routeIs('divisi', 'create-divisi', 'edit-divisi')) active @endif">
         <a class="nav-link" href="{{ route('divisi') }}">
             <i class="fas fa-shield-alt"></i>
             <span>Divisi</span></a>
     </li>
+    {{-- @endrole --}}
+
+    @role('admin')
     <li class="nav-item @if(request()->routeIs('jadwal', 'create-jadwal', 'edit-jadwal')) active @endif">
         <a class="nav-link" href="{{ route('jadwal') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Jadwal Latihan</span></a>
     </li>
+    @endrole
+
+    @role('admin')
+    <li class="nav-item @if(request()->routeIs('pengurus')) active @endif">
+        <a class="nav-link" href="{{ route('pengurus') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Buat Akun</span></a>
+    </li>
+    @endrole
+
+    @role('pengurus')
     <li class="nav-item @if(request()->routeIs('alat', 'create-alat', 'edit-alat')) active @endif">
         <a class="nav-link" href="{{ route('alat') }}">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Alat</span></a>
     </li>
+    @endrole
 
+
+    @role('pengurus')
     <!-- Pembatas -->
     <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    {{-- <div class="sidebar-heading">
-            Transaksi
-        </div> --}}
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item @if(request()->routeIs('peminjaman', 'pengembalian')) active @endif">
@@ -80,6 +96,7 @@
             </div>
         </div>
     </li>
+    @endrole
 
     <!-- Pembatas -->
     <hr class="sidebar-divider d-none d-md-block">
