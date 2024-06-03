@@ -1,4 +1,4 @@
-{{-- @extends('master.main')
+@extends('master.main')
 @section('title', 'Pengembalian Alat')
 @section('content')
 <div class="container-fluid">
@@ -54,4 +54,4 @@
     </div>
 </div>
 @include('sweetalert::alert')
-@endsection --}}
+@endsection 

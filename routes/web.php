@@ -96,12 +96,12 @@ Route::group(['middleware'=> ['can:transaksi']], function () {
     Route::delete('/alat/delete/{id}', [AlatController::class, 'destroy'])->name('delete-alat');
 
     Route::get('/pinjam', [PeminjamanController::class, 'index'])->name('peminjaman');
-    // Route::get('/pinjam/create', [PeminjamanController::class, 'create'])->name('create-pinjam');
-    // Route::post('/pinjam/simpan', [PeminjamanController::class, 'store'])->name('simpan-pinjam');
+    Route::get('/pinjam/create', [PeminjamanController::class, 'create'])->name('create-pinjam');
+    Route::post('/pinjam/simpan', [PeminjamanController::class, 'store'])->name('simpan-pinjam');
 
     Route::get('/pengembalian', [PengembalianController::class, 'index'])->name('pengembalian');
-    // Route::get('/pengembalian/create/{id}', [PengembalianController::class, 'create'])->name('create-kembali');
-    // Route::post('/pengebalian/simpan', [PengembalianController::class, 'store'])->name('simpan-kembali');
+    Route::get('/pengembalian/create/{id}', [PengembalianController::class, 'create'])->name('create-kembali');
+    Route::post('/pengebalian/simpan', [PengembalianController::class, 'store'])->name('simpan-kembali');
     Route::delete('/pengembalian/delete/{id}', [PengembalianController::class, 'destroy'])->name('delete-pengembalian');
 });
 

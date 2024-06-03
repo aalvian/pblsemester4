@@ -11,10 +11,10 @@
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
-            {{-- <div class="card-header py-3">
+            <div class="card-header py-3">
                 <a href="{{ route('create-pinjam') }}" class="btn btn-primary btn-sm ml-auto"><i class="fas fa-plus"></i>
                     Tambah</a>
-            </div> --}}
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
 
@@ -29,7 +29,7 @@
                                 <th>Jumlah Barang</th>
                                 <th>Tanggal Pinjam</th>
                                 <th>Foto Alat</th>
-                                {{-- <th>Aksi</th> --}}
+                                 <th>Aksi</th>
                             </tr>
                         </thead>
 
@@ -51,7 +51,7 @@
                                     @else
                                         Tidak ada cv
                                     @endif
-                                {{-- </td>
+                                </td>
 
                                     <td class="text-center" style="width: 15%;">
                                         <form action="{{ route('create-kembali', $item->id) }}" onsubmit="return confirm('Apakah Anda Yakin Mengembalikan?');">
@@ -63,7 +63,7 @@
                                     </td>
 
 
-                                </tr> --}}
+                                </tr>
                             @endforeach
                         </tbody>
 

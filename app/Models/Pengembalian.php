@@ -20,7 +20,7 @@ class pengembalian extends Model
         'jml_barang',
         'tggl_pinjam',
         'tggl_kembali',
-        'bukti',
+        'image',
         'deskripsi',
     ];
 }
