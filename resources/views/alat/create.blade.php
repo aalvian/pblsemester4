@@ -19,7 +19,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <form action="{{ route('simpan-alat') }}" method="post">
+                    <form action="" method="post">
                         {{ csrf_field() }}
 
                         <div class="form-group">
