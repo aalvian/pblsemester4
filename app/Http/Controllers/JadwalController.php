@@ -11,6 +11,9 @@ class JadwalController extends Controller
 
     public function index()
     {
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('mengakses jadwal');
         $dtJadwal = Jadwal::all();
         return view ('jadwal.index', compact('dtJadwal'));
     }
@@ -37,7 +40,9 @@ class JadwalController extends Controller
             'waktu_selesai' => $request->waktu_selesai,
             'divisi_id'=>$request->divisi_id,
         ]);
-
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('create jadwal');
         return redirect('jadwal')->with('toast_success', 'Data Berhasil Disimpan');
     }
 
@@ -54,6 +59,9 @@ class JadwalController extends Controller
     {
         $jadwals = Jadwal::findOrFail($id);
         $jadwals->update($request->all());
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('edit jadwal');
         return redirect('jadwal')->with('toast_success', 'Data Berhasil Diubah');
     }
 
@@ -62,6 +70,9 @@ class JadwalController extends Controller
     {
         $jadwals = Jadwal::findOrFail($id);
         $jadwals->delete();
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('hapus jadwal');
         return back()->with('toast_success', 'Data Berhasil Dihapus');
     }
 }

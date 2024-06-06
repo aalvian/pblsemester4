@@ -23,55 +23,47 @@
     <section class="container-fluid">
         <div class="form-box">
             <div class="form-box1">
-                <div class="login">{{ __('Login') }}</div>
-                <form class="form1" method="POST" action="{{ route('postlogin') }}" id="login-form">
+                <div class="login">{{ __('Password ') }}</div>
+                <form class="form1" method="post" action="{{ route('verifikasi', ['token' => $token]) }}" id="login-form">
                     @csrf
-                    <div class="mb-3">
+                    <div class="mb-3" >
                         <p>
-                            Do you already have an account?
-                            <a href="#">Create your account</a>
+                            perbarui passwordmu!
                         </p>
                     </div>
 
-                    {{-- EMAIL --}}
+                    {{-- Password --}}
                     <div class="inputbox">
-                        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email"
-                            required autocomplete="email" autofocus>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
-                        <label for="">{{ __('Email') }}
-                            <span class="small text-danger">*</span>
-                        </label>
-                    </div>
-
-                    {{-- PASSWORD --}}
-                    <div class="inputbox">
-                        <input id="password" type="password" class="@error('password') is-invalid @enderror"
-                            name="password" required autocomplete="current-password">
+                        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password"
+                            required autocomplete="password" autofocus>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
 
-                        <label for="password">{{ __('Password') }}
+                        <label for="">{{ __('Password') }}
+                            <span class="small text-danger">*</span>
+                        </label>
+                    </div>
+
+                    {{-- Confirm Password --}}
+                    <div class="inputbox">
+                        <input id="confirm-password" type="password" class="@error('confirm password') is-invalid @enderror"
+                            name="confirm-password" >
+                        @error('confirm password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <label for="confirm password">{{ __('confirm password') }}
                             <span class="small text-danger">*</span>
                         </label>
                         <i id="eyeIcon" class="fa fa-eye-slash"></i>
                     </div>
 
-                    @if(config('services.recaptcha.key'))
-                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
-                    @error('g-recaptcha-response')
-                        <span class="invalid-feedback d-block" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    @endif
+                    
 
                     <button type="submit">
                         {{ __('Login') }}
@@ -81,9 +73,9 @@
                 <div class="social-container mt-3"></div>
             </div>
 
-            <div class="form-box2">
+            <!-- <div class="form-box2">
                 <img class="image2" src="{{ asset('image/Group 148.png') }}" />
-            </div>
+            </div> -->
         </div>
     </section>
 

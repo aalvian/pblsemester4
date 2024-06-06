@@ -10,6 +10,9 @@ class AlatController extends Controller
 
     public function index()
     {
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('mengakses alat'); 
         $dtAlat = Alat::all();
         return view('alat.index', compact('dtAlat'));
     }
@@ -36,6 +39,7 @@ class AlatController extends Controller
             'stok' => $request->stok,
             'tggl_masuk' => $request->tggl_masuk,
         ]);
+        
 
         return redirect('alat')->with('toast_success', 'Data Berhasil Disimpan');
     }
