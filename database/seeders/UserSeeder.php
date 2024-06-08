@@ -14,34 +14,44 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Admin Aplikasi',
-            'nim' => '362258302111',
-            'prodi' => 'TRPL',
-            'role' => 'admin',
-            'email' => 'admin@ukmolahraga.com',
-            'password' => bcrypt('admin'),
-            'remember_token' => Str::random(60),
+        // User::create([
+        //     'name' => 'Admin Aplikasi',
+        //     'nim' => '362258302111',
+        //     'prodi' => 'TRPL',
+        //     'role' => 'admin',
+        //     'email' => 'admin@ukmolahraga.com',
+        //     'password' => bcrypt('admin'),
+        //     'remember_token' => Str::random(60),
             
-        ]);
+        // ]);
+
+        // User::create([
+        //     'name' => 'root',
+        //     'nim' => '362258302222',
+        //     'prodi' => 'TRPL',
+        //     'role' => 'pengurus',
+        //     'email' => 'root@email.com',
+        //     'password' => bcrypt('root'),
+        //     'remember_token' => Str::random(60),
+        // ]);
+
+        // User::create([
+        //     'name' => 'Anggota',
+        //     'nim' => '362258302454',
+        //     'prodi' => 'TRPL',
+        //     'role' => 'anggota',
+        //     'email' => 'anggota@email.com',
+        //     'password' => bcrypt('anggota'),
+        //     'remember_token' => Str::random(60),
+        // ]);
 
         User::create([
-            'name' => 'root',
-            'nim' => '362258302222',
+            'name' => 'Mohamad Joko',
+            'nim' => '362258302122',
             'prodi' => 'TRPL',
             'role' => 'pengurus',
-            'email' => 'root@email.com',
-            'password' => bcrypt('root'),
-            'remember_token' => Str::random(60),
-        ]);
-
-        User::create([
-            'name' => 'Anggota',
-            'nim' => '362258302454',
-            'prodi' => 'TRPL',
-            'role' => 'anggota',
-            'email' => 'anggota@email.com',
-            'password' => bcrypt('anggota'),
+            'email' => 'joko@email.com',
+            'password' => bcrypt('joko123'),
             'remember_token' => Str::random(60),
         ]);
 

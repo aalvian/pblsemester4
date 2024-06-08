@@ -27,7 +27,6 @@
                             <th>Jumlah Barang</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
-                            <th>Deskripsi</th>
                             <th>Gambar</th>
 
                             @if (auth()->user()->role == 'administator')
@@ -47,7 +46,7 @@
                             <td>{{ $data->jml_barang }}</td>
                             <td>{{ date('d-m-Y', strtotime ($data->tggl_pinjam)) }}</td>
                             <td>{{ date('d-m-Y', strtotime ($data->tggl_kembali)) }}</td>
-                            <td>{{ $data->deskripsi }}</td>
+                            <!-- <td>{{ $data->deskripsi }}</td> -->
                             <td>
                                 @if ($data->image)
                                 <img src="{{ asset('storage/image/' . $data->image) }}" alt="Gambar tidak ada" style="max-width: 200px; max-height: 200px;">

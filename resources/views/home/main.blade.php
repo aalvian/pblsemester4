@@ -20,7 +20,7 @@
                     <p>UKM Olahraga</p>
                 </div>
             </div>
-            <img src="{{ asset('image/pembuatan-website-olahraga.png') }}" alt="" class="accent-img position-absolute start-0 w-100" style="top:80px;">
+            <img src="{{ asset('image/cb.jpeg') }}" alt="" class="accent-img position-absolute start-0 w-100" style="top:80px;">
         </div>
     </section>
 

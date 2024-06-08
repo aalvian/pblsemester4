@@ -7,15 +7,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav  mx-auto">
                 <li class="nav-item mx-2">
-                    <a class="nav-link shadow-text" href="#" aria-current="page">Home</a>
+                    <a class="nav-link shadow-text" href="#" aria-current="page">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link shadow-text" href="#About">About</a>
+                    <a class="nav-link shadow-text" href="#Devisi">Divisi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link shadow-text" href="#Team">Team</a>
+                    <a class="nav-link shadow-text" href="#Team">Alat</a>
                 <li class="nav-item">
-                    <a class="nav-link shadow-text" href="#Contact">Contact</a>
+                    <a class="nav-link shadow-text" href="#Contact">Tentang Kami</a>
                 </li>
             </ul>
 

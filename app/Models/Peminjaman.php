@@ -20,5 +20,11 @@ class Peminjaman extends Model
         'jml_barang',
         'tggl_pinjam',
         'bukti',
+        'petugas_id'
     ];
+    public function petugas()
+    {
+        return $this->belongsTo(User::class, 'petugas_id');
+    }
+    
 }
