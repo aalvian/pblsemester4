@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
             $table->enum('hari', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']);
-            $table->integer('divisi_id');
+            $table->unsignedBigInteger('divisi_id');
             $table->time('waktu_mulai');
             $table->time('waktu_selesai');
             $table->timestamps();
+
+            $table->foreign('divisi_id')->references('id')->on('divisis')->onDelete('cascade');
         });
     }
 

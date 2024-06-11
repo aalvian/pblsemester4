@@ -30,7 +30,9 @@ class DashboardController extends Controller
         //     return view('dashboard.index', compact('totalPendaftar', 'totalDivisi', 'pendaftarTerima', 'pendaftarTolak', 'persentaseTerima', 'persentaseTolak'));
         // }
         // return abort(403); // keamanan lewat controller
-
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('membuka beranda');
         return view('dashboard.index', compact('totalPendaftar', 'totalDivisi', 'pendaftarTerima', 'pendaftarTolak', 'persentaseTerima', 'persentaseTolak'));
 
     }

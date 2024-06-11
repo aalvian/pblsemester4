@@ -53,6 +53,9 @@ class PeminjamanController extends Controller
             ]);
 
             if($peminjaman) {
+                $user = auth()->user();
+                $logName = $user->name;
+                activity()->inLog($logName)->log($logName.'melakukan peminjaman atas nama'.$request->nama);
                 return redirect()->route('peminjaman')->with('success', 'Peminjaman berhasil dibuat');
             }
         } else {

@@ -23,4 +23,8 @@ class Jadwal extends Model
     {
         return $this->belongsTo(Divisi::class);
     }
+    public function divisi1()
+    {
+        return $this->belongsTo(Divisi::class, 'divisi_id');
+    }
 }

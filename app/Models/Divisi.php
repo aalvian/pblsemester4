@@ -20,4 +20,8 @@ class Divisi extends Model
     {
         return $this->hasMany(Jadwal::class);
     }
+    public function jadwal1()
+    {
+        return $this->hasMany(Jadwal::class, 'divisi_id');
+    }
 }

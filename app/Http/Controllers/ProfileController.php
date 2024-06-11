@@ -51,7 +51,9 @@ class ProfileController extends Controller
         }
 
         $user->save();
-
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('mengupdate informasi profile');
         return redirect()->route('profile')->withSuccess('Profile Berhasil Diubah.');
     }
 
@@ -77,6 +79,9 @@ class ProfileController extends Controller
             ->update(['gambar' => $namaFileUnik]);
 
         if ($up != null) {
+            $user = auth()->user();
+            $logName = $user->name;
+            activity()->inLog($logName)->log('mengupdate foto profile');
             return redirect()->route('profile')->withSuccess('Profile Berhasil Diubah.');
         } else {
             return redirect()->route('profile')->withErrors('Profile Gagal Diubah.');
@@ -95,7 +100,9 @@ class ProfileController extends Controller
 
         $user->gambar = null;
         $user->save();
-
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('menghapus foto profil');
         return redirect()->route('profile')->withSuccess('Profile Berhasil Diubah.');
     }
 }

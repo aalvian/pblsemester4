@@ -77,7 +77,9 @@ class PengembalianController extends Controller
 
         // Menghapus data peminjaman
         $peminjaman->delete();
-
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->withProperties([$peminjaman->nim,$request->nama_barang,$peminjaman->tggl_pinjam,$peminjaman->tggl_pinjam,$request->status,])->inLog($logName)->log($logName.'mengembalikan barang yang dipinjam oleh'.$peminjaman->nama);
         return redirect()->route('pengembalian')->with('success', 'Alat berhasil dikembalikan.');
     }
 
@@ -91,6 +93,7 @@ class PengembalianController extends Controller
             Storage::delete('public/gambar/' . $alat->image);
         }
         $alat->delete();
+        
         return back()->with('toast_success', 'Data Berhasil Dihapus');
     }
 }

@@ -10,7 +10,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PengembalianController;
+use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SwitchRoleController;
 use App\Http\Controllers\UkmController;
 use App\Http\Middleware\CekRole;
 use App\Models\Alat;
@@ -108,8 +110,10 @@ Route::group(['middleware'=> ['can:transaksi']], function () {
 
 Route::group(['middleware'=> ['can:manage_pengurus']], function () {
     Route::get('/pengurus', [BuatAkunController::class, 'index'])->name('pengurus');
+    Route::get('/pengurus/create', [BuatAkunController::class, 'create'])->name('create-pengurus');
     Route::get('/pengurus/detail/{id}', [BuatAkunController::class, 'detail'])->name('detail-pengurus');
     Route::put('/pengurus/update/{id}', [BuatAkunController::class, 'update'])->name('update-pengurus');
+    Route::get('/pengurus/delete/{id}', [BuatAkunController::class, 'destroy'])->name('delete-pengurus');
 
 
 });
@@ -123,10 +127,18 @@ Route::group(['middleware'=> ['can:manage_pengurus']], function () {
     Route::post('/profile/delete', [ProfileController::class, 'deleteGambar'])->name('delete-profile');
 
 
+    Route::middleware(['auth'])->group(function () {
+        // ...
+        Route::get('/switch-role/{role}', SwitchRoleController::class)->name('switch.role');
+        // ...
+    });
 
+    Route::get('/pendaftaran/create', [PendaftaranController::class, 'formDaftar'])->name('create-pendaftaran');
+    Route::post('/pendaftaran/simpan', [PendaftaranController::class, 'store'])->name('store-pendaftaran');
+    Route::get('registered/akun/{token}', [PendaftaranController::class, 'view'])->name('form');
+    Route::post('/verifikasi/{token}', [LoginController::class, 'verifikasi'])->name('verifikasi');
 
-
-
+    Route::get('presensi/view/', [PresensiController::class, 'index'])->name('view-presensi');
 
 
 

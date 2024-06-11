@@ -10,6 +10,9 @@ class AlatController extends Controller
 
     public function index()
     {
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('membuka alat');
         $dtAlat = Alat::all();
         return view('alat.index', compact('dtAlat'));
     }
@@ -36,7 +39,9 @@ class AlatController extends Controller
             'stok' => $request->stok,
             'tggl_masuk' => $request->tggl_masuk,
         ]);
-
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('menambah alat');
         return redirect('alat')->with('toast_success', 'Data Berhasil Disimpan');
     }
 
@@ -52,6 +57,9 @@ class AlatController extends Controller
     {
         $alat = Alat::findOrFail($id);
         $alat->update($request->all());
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('mengedit alat');
         return redirect('alat')->with('toast_success', 'Data Berhasil Diubah');
     }
 
@@ -60,6 +68,9 @@ class AlatController extends Controller
     {
         $alat = Alat::findOrFail($id);
         $alat->delete();
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('menghapus alat');
         return back()->with('toast_success', 'Data Berhasil Dihapus');
     }
 }

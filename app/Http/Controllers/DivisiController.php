@@ -11,6 +11,9 @@ class DivisiController extends Controller
     public function index()
     {
         $dtDivisi = Divisi::all();
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('mengakses divisi');
         return view('divisi.index', compact('dtDivisi'));
     }
 
@@ -31,6 +34,9 @@ class DivisiController extends Controller
             'nama' => $request->nama,
         ]);
 
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('menambahkan divisi');
         return redirect('divisi')->with('toast_success', 'Data Berhasil Disimpan');
     }
 
@@ -46,6 +52,9 @@ class DivisiController extends Controller
     {
         $divisis = Divisi::findOrFail($id);
         $divisis->update($request->all());
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('mengedit divisi');
         return redirect('divisi')->with('toast_success', 'Data Berhasil Diubah');
     }
 
@@ -54,6 +63,9 @@ class DivisiController extends Controller
     {
         $divisis = Divisi::findOrFail($id);
         $divisis->delete();
+        $user = auth()->user();
+        $logName = $user->name;
+        activity()->inLog($logName)->log('menghapus divisi');
         return back()->with('toast_success', 'Data Berhasil Dihapus');
     }
 }

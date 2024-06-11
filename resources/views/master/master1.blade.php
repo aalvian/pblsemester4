@@ -12,9 +12,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        @include('partials.sidebar')
-        <!-- End of Sidebar -->
+        
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -22,9 +20,7 @@
             <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
-                @include('partials.navbar')
-                <!-- End of Topbar -->
+               
 
                 <!-- Begin Page Content -->
                 @yield('content')
@@ -58,30 +54,6 @@
         position: "top-center",
         icon: "success",
         title: "Kamu Berhasil Login",
-        showConfirmButton: false,
-        timer: 1500
-      });
-    </script>
-    @endif
-
-    @if ($message = Session::get('success'))
-    <script>
-        Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Kamu Berhasil Login Sebagai Admin",
-        showConfirmButton: false,
-        timer: 1500
-      });
-    </script>
-    @endif
-
-    @if ($message = Session::get('sukses'))
-    <script>
-        Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Berhasil Swith Akun",
         showConfirmButton: false,
         timer: 1500
       });

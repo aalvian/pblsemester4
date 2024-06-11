@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->char('nim');
             $table->string('prodi');
-            $table->string('role');
+            $table->string('role')->default('anggota');
             $table->string('gambar')->nullable();
             $table->string('email')->unique();
+            $table->foreignId('current_role_id')->nullable()->constrained('roles')->after('email');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
