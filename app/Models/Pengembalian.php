@@ -22,5 +22,10 @@ class pengembalian extends Model
         'tggl_kembali',
         'image',
         'deskripsi',
+        'petugas_id'
     ];
+    public function petugas()
+    {
+        return $this->belongsTo(User::class, 'petugas_id');
+    }
 }

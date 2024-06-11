@@ -101,7 +101,7 @@ Route::group(['middleware'=> ['can:transaksi']], function () {
 
     Route::get('/pengembalian', [PengembalianController::class, 'index'])->name('pengembalian');
     Route::get('/pengembalian/create/{id}', [PengembalianController::class, 'create'])->name('create-kembali');
-    Route::post('/pengebalian/simpan', [PengembalianController::class, 'store'])->name('simpan-kembali');
+    Route::post('/pengembalian/simpan/', [PengembalianController::class, 'store'])->name('simpan-kembali');
     Route::delete('/pengembalian/delete/{id}', [PengembalianController::class, 'destroy'])->name('delete-pengembalian');
 });
 

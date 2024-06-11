@@ -49,6 +49,7 @@ class PeminjamanController extends Controller
             $alat->stok -= $request->jml_barang;
             $alat->save();
 
+           
             $peminjaman = Peminjaman::create([
                 'nama' => $request->nama,
                 'nim' => $request->nim,

@@ -28,7 +28,7 @@
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
                             <th>Gambar</th>
-
+                            <th>Petugas</th>
                             @if (auth()->user()->role == 'administator')
                             <th>Aksi</th>
                             @endif
@@ -54,6 +54,7 @@
                                 Tidak ada bukti
                                 @endif
                             </td>
+                            <td>{{ $data->petugas ? $data->petugas->name : 'N/A' }}</td>
 
                             @if (auth()->user()->role == 'administator')
                             <td class="text-center" style="width: 9%;">

@@ -7,6 +7,7 @@ use App\Models\Peminjaman;
 use App\Models\Pengembalian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class PengembalianController extends Controller
 {
@@ -24,10 +25,13 @@ class PengembalianController extends Controller
 
     public function store(Request $request)
     {
+
+        $user = Auth::id();
         $request->validate([
             'nama_barang' => 'required',
             'jml_barang' => 'required|numeric|min:1',
             'tggl_kembali' => 'required|date',
+            'tggl_pinjam' => 'required|date',
             'status' => 'required',
             'image' => 'nullable|file|mimes:jpeg,png,jpg|max:10240',
         ]);
@@ -43,7 +47,12 @@ class PengembalianController extends Controller
 
 
         // Ambil data peminjaman berdasarkan nama alat
-        $peminjaman = Peminjaman::where('nama_barang', $request->nama_barang)->first();
+       // $peminjaman = Peminjaman::where('nama_barang', $request->nama_barang)->first();
+       $peminjaman = Peminjaman::where([
+        'nama_barang' => $request->nama_barang,
+       
+        'tggl_pinjam' => $request->tggl_pinjam,
+    ])->first();
 
         // Cek apakah data peminjaman ditemukan
         if (!$peminjaman) {
@@ -67,12 +76,13 @@ class PengembalianController extends Controller
             'nama' => $peminjaman->nama,
             'nim' => $peminjaman->nim,
             'prodi' => $peminjaman->prodi,
-            'nama_barang' => $request->nama_barang,
+            'nama_barang' => $peminjaman->nama_barang,
             'jml_barang' => $request->jml_barang,
             'tggl_kembali' => $request->tggl_kembali,
             'tggl_pinjam' => $peminjaman->tggl_pinjam,
             'status' => $request->status,
             'image' => $imageName,
+            'petugas_id' => $user,
         ]);
 
         // Menghapus data peminjaman

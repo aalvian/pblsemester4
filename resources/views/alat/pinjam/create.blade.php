@@ -25,15 +25,14 @@
                          <label for="prodi">Prodi</label>
                          <select name="prodi" class="form-control" required>
                              <option value="">Pilih Prodi</option>
-                             <option value="trpl">TRPL</option>
-                             <option value="bisnis_digital">Bisnis Digital</option>
-                             <option value="bisnis_digital">Manajemen Bisnis Pariwisata</option>
-                             <option value="teknik_sipil">Teknik Sipil</option>
-                             <option value="teknik_mesin">Teknik Mesin</option>
-                             <option value="teknik_elektro">TPHT </option>
-                             <option value="agribisnis">Agribisnis</option>
-                             <option value="tmk">TMK</option>
-                             <!-- Tambahkan prodi lainnya di sini -->
+                             <option value="TRPL">TRPL</option>
+                             <option value="Bisnis Digital">Bisnis Digital</option>
+                             <option value="MANAJEMEN Bisnis Pariwisata">Manajemen Bisnis Pariwisata</option>
+                             <option value="Teknik Sipil">Teknik Sipil</option>
+                             <option value="Teknik Mesin">Teknik Mesin</option>
+                             <option value="TPHT">TPHT </option>
+                             <option value="Agribisnis">Agribisnis</option>
+                             <option value="TMK">TMK</option>
                          </select>
                      </div>
                      <div class="form-group">

@@ -20,12 +20,15 @@
                             @endforeach
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="jml_barang">Jumlah Barang yang Dikembalikan</label>
                         <input type="number" name="jml_barang" class="form-control" required>
                     </div>
 
+                    <div class="form-group">
+                        <label for="tggl_pinjam">Tanggal Pinjam</label>
+                        <input type="date" name="tggl_pinjam" class="form-control" required>
+                    </div>
                     <div class="form-group">
                         <label for="tggl_kembali">Tanggal Kembali</label>
                         <input type="date" name="tggl_kembali" class="form-control" required>
@@ -54,4 +57,4 @@
     </div>
 </div>
 @include('sweetalert::alert')
-@endsection 
+@endsection
