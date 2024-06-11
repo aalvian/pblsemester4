@@ -49,7 +49,7 @@ class PermissionSeeder extends Seeder
         $user  = User::find(1); //yg ada pada table user nomer 1
         $user2 = User::find(2);
         $user3 = User::find(3);
-        $user5 = User::find(5);
+        $user5= User::find(5);
 
         $user->assignRole('admin');
         $user2->assignRole('pengurus');
