@@ -1,6 +1,15 @@
  @extends('master.main')
  @section('title', 'Create Data')
  @section('content')
+ <script>
+        function updateStok() {
+            const selectElement = document.querySelector('select[name="nama_barang"]');
+            const stokDisplay = document.getElementById('stokDisplay');
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const stok = selectedOption.getAttribute('data-stok');
+            stokDisplay.textContent = stok ? `Stok: ${stok}` : '';
+        }
+    </script>
  <div class="container-fluid">
      <h1 class="h3 mb-4 text-gray-800">Create Pinjam Alat</h1>
      <div class="card shadow mb-4">
@@ -35,14 +44,17 @@
                              <option value="TMK">TMK</option>
                          </select>
                      </div>
+                     <div id="stokDisplay" class="mt-2"></div>
                      <div class="form-group">
                          <label for="nama_barang">Nama Alat</label>
-                         <select wire:model="selectedAlat" name="nama_barang" class="form-control">
-                             <option value="">-- Select Alat --</option>
-                             @foreach ($alat as $item)
-                             <option value="{{ $item->nama_barang }}">{{ $item->nama_barang }}</option>
-                             @endforeach
-                         </select>
+                         <select wire:model="selectedAlat" name="nama_barang" class="form-control" onchange="updateStok()">
+                    <option value="">-- Select Alat --</option>
+                    @foreach ($alat as $item)
+                        <option value="{{ $item->nama_barang }}" data-stok="{{ $item->stok }}">
+                            {{ $item->nama_barang }}
+                        </option>
+                    @endforeach
+                </select>   
                      </div>
 
                      <div class="form-group">
