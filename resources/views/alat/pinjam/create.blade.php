@@ -7,8 +7,15 @@
             const stokDisplay = document.getElementById('stokDisplay');
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const stok = selectedOption.getAttribute('data-stok');
-            stokDisplay.textContent = stok ? `Stok: ${stok}` : '';
+            stokDisplay.textContent = stok ? `Stok Tersisa: ${stok}` : '';
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.querySelector('input[name="tggl_pinjam"]');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        });
+
+
     </script>
  <div class="container-fluid">
      <h1 class="h3 mb-4 text-gray-800">Create Pinjam Alat</h1>
@@ -44,18 +51,18 @@
                              <option value="TMK">TMK</option>
                          </select>
                      </div>
-                     <div id="stokDisplay" class="mt-2"></div>
                      <div class="form-group">
                          <label for="nama_barang">Nama Alat</label>
                          <select wire:model="selectedAlat" name="nama_barang" class="form-control" onchange="updateStok()">
-                    <option value="">-- Select Alat --</option>
-                    @foreach ($alat as $item)
-                        <option value="{{ $item->nama_barang }}" data-stok="{{ $item->stok }}">
-                            {{ $item->nama_barang }}
-                        </option>
-                    @endforeach
-                </select>   
-                     </div>
+                             <option value="">-- Select Alat --</option>
+                             @foreach ($alat as $item)
+                             <option value="{{ $item->nama_barang }}" data-stok="{{ $item->stok }}">
+                                 {{ $item->nama_barang }}
+                                 </option>
+                                 @endforeach
+                                 </select>   
+                                 </div>
+                                <div id="stokDisplay" class="mt-2"></div>
 
                      <div class="form-group">
                          <label for="jml_barang">Jumlah Barang</label>
