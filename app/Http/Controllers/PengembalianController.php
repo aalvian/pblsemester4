@@ -16,18 +16,18 @@ class PengembalianController extends Controller
         $dtpengembalian = Pengembalian::all();
         return view('alat.pengembalian.index', compact('dtpengembalian'));
     }
-
-    public function create()
+    public function create($id)
     {
-        $alat = Alat::all();
-        return view('alat.pengembalian.kembali', compact('alat'));
+        $peminjaman = Peminjaman::findOrFail($id); // Mengambil peminjaman berdasarkan ID
+        $alat = Alat::where('nama_barang', $peminjaman->nama_barang)->firstOrFail(); // Mengambil detail alat berdasarkan nama barang
+        return view('alat.pengembalian.kembali', compact('peminjaman', 'alat'));
     }
-
     public function store(Request $request)
     {
 
         $user = Auth::id();
         $request->validate([
+            'id' => 'required|exists:alats,id',
             'nama_barang' => 'required',
             'jml_barang' => 'required|numeric|min:1',
             'tggl_kembali' => 'required|date',
@@ -45,6 +45,8 @@ class PengembalianController extends Controller
             $imageName = null; // No image upload
         }
 
+        $alat = Alat::findOrFail($request->id);
+        $alat->update(['status' => 'returned']);
 
         // Ambil data peminjaman berdasarkan nama alat
        // $peminjaman = Peminjaman::where('nama_barang', $request->nama_barang)->first();

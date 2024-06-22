@@ -96,7 +96,7 @@ Route::group(['middleware'=> ['can:transaksi']], function () {
     Route::delete('/alat/delete/{id}', [AlatController::class, 'destroy'])->name('delete-alat');
 
     Route::get('/pinjam', [PeminjamanController::class, 'index'])->name('peminjaman');
-    Route::get('/pinjam/create', [PeminjamanController::class, 'create'])->name('create-pinjam');
+    Route::get('/pinjam/create/', [PeminjamanController::class, 'create'])->name('create-pinjam');
     Route::post('/pinjam/simpan', [PeminjamanController::class, 'store'])->name('simpan-pinjam');
 
     Route::get('/pengembalian', [PengembalianController::class, 'index'])->name('pengembalian');

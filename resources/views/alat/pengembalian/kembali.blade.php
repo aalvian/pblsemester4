@@ -12,23 +12,19 @@
                 <form action="{{ route('simpan-kembali') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="form-group">
-                        <label for="nama_barang">Pilih Barang yang Dikembalikan</label>
-                        <select name="nama_barang" class="form-control">
-                            @foreach ($alat as $item)
-                            <option value="{{ $item->nama_barang }}">{{ $item->nama_barang }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="jml_barang">Jumlah Barang yang Dikembalikan</label>
-                        <input type="number" name="jml_barang" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tggl_pinjam">Tanggal Pinjam</label>
-                        <input type="date" name="tggl_pinjam" class="form-control" required>
-                    </div>
+                   <input type="hidden" name="id" value="{{ $peminjaman->id }}">
+                        <div class="form-group">
+                            <label for="nama_barang">Barang yang Dikembalikan</label>
+                            <input type="text" name="nama_barang" class="form-control" value="{{ $alat->nama_barang }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="jml_barang">Jumlah Barang</label>
+                            <input type="text" name="jml_barang" class="form-control" value="{{ $peminjaman->jml_barang }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="tggl_pinjam">Tanggal Pinjam</label>
+                            <input type="text" name="tggl_pinjam" class="form-control" value="{{ $peminjaman->tggl_pinjam }}" readonly>
+                        </div>
                     <div class="form-group">
                         <label for="tggl_kembali">Tanggal Kembali</label>
                         <input type="date" name="tggl_kembali" class="form-control" required>

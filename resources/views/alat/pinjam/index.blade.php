@@ -46,7 +46,7 @@
                                     <td>{{ $item->petugas ? $item->petugas->name : 'N/A' }}</td>
 
                                     <td class="text-center" style="width: 15%;">
-                                        <form action="{{ route('create-kembali', $item->id) }}" onsubmit="return confirm('Apakah Anda Yakin Mengembalikan?');">
+                                        <form action="{{ route('create-kembali', $item->id) }}">
                                             @csrf
                                             <button type="submit" class="btn btn-sm btn-primary">
                                                 <i class="bi bi-arrow-return-left"></i> Kembalikan
