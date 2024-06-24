@@ -13,6 +13,7 @@ class pengembalian extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         'id',
+        'id_peminjaman',
         'nama',
         'nim',
         'prodi',

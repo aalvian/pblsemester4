@@ -8,6 +8,7 @@ use App\Models\Pengembalian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class PengembalianController extends Controller
 {
@@ -24,10 +25,8 @@ class PengembalianController extends Controller
     }
     public function store(Request $request)
     {
-
-        $user = Auth::id();
-        $request->validate([
-            'id' => 'required|exists:alats,id',
+        // Validasi permintaan yang masuk
+        $validatedData = $request->validate([
             'nama_barang' => 'required',
             'jml_barang' => 'required|numeric|min:1',
             'tggl_kembali' => 'required|date',
@@ -35,64 +34,53 @@ class PengembalianController extends Controller
             'status' => 'required',
             'image' => 'nullable|file|mimes:jpeg,png,jpg|max:10240',
         ]);
-
-        // Simpan gambar ke storage
+    
+        // Simpan gambar ke storage jika ada
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('image', $imageName, 'public');
         } else {
-            $imageName = null; // No image upload
+            $imageName = null; // Tidak ada gambar yang diunggah
         }
-
-        $alat = Alat::findOrFail($request->id);
-        $alat->update(['status' => 'returned']);
-
-        // Ambil data peminjaman berdasarkan nama alat
-       // $peminjaman = Peminjaman::where('nama_barang', $request->nama_barang)->first();
-       $peminjaman = Peminjaman::where([
-        'nama_barang' => $request->nama_barang,
-       
-        'tggl_pinjam' => $request->tggl_pinjam,
-    ])->first();
-
-        // Cek apakah data peminjaman ditemukan
+    
+        // Cari data peminjaman yang sesuai
+        $peminjaman = Peminjaman::where('nama_barang', $validatedData['nama_barang'])
+            ->where('tggl_pinjam', $validatedData['tggl_pinjam'])
+            ->first();
+    
         if (!$peminjaman) {
             return redirect()->back()->with('error', 'Data peminjaman tidak ditemukan.');
         }
-
-        // Cek apakah jumlah barang yang dikembalikan sama dengan yang dipinjam
-        if ($request->jml_barang > $peminjaman->jml_barang) {
-            return redirect()->back()->with('error', 'Jumlah alat yang dikembalikan tidak sesuai dengan saat peminjaman alat.');
-        }
-
-        // Mengurangi nilai stok di database alat
-        $alat = Alat::where('nama_barang', $peminjaman->nama_barang)->first();
-        if ($alat) {
-            $newStock = $alat->stok + $request->jml_barang; // Tambahkan jumlah barang yang dikembalikan ke stok
-            $alat->update(['stok' => $newStock]);
-        }
-
+    
         // Simpan data ke tabel pengembalian
-        Pengembalian::create([
+        $user = Auth::id(); // Ambil ID pengguna yang sedang login
+    
+        $pengembalian = Pengembalian::create([
+            'id_peminjaman' => $peminjaman->id,
             'nama' => $peminjaman->nama,
             'nim' => $peminjaman->nim,
             'prodi' => $peminjaman->prodi,
-            'nama_barang' => $peminjaman->nama_barang,
-            'jml_barang' => $request->jml_barang,
-            'tggl_kembali' => $request->tggl_kembali,
-            'tggl_pinjam' => $peminjaman->tggl_pinjam,
-            'status' => $request->status,
+            'nama_barang' => $validatedData['nama_barang'],
+            'jml_barang' => $validatedData['jml_barang'],
+            'tggl_kembali' => $validatedData['tggl_kembali'],
+            'tggl_pinjam' => $validatedData['tggl_pinjam'],
+            'status' => $validatedData['status'],
             'image' => $imageName,
             'petugas_id' => $user,
         ]);
-
-        // Menghapus data peminjaman
-        $peminjaman->delete();
-
-        return redirect()->route('pengembalian')->with('success', 'Alat berhasil dikembalikan.');
+    
+        // Handle kesalahan atau sukses dalam penyimpanan
+        if ($pengembalian) {
+            // Hapus data peminjaman setelah berhasil dikirimkan ke tabel pengembalian
+            $peminjaman->delete();
+    
+            return redirect()->route('pengembalian')->with('success', 'Data berhasil dikembalikan.');
+        } else {
+            return redirect()->back()->with('error', 'Gagal menyimpan data pengembalian.');
+        }
     }
-
+    
 
 
     public function destroy(string $id)
