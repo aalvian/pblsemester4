@@ -21,8 +21,9 @@ return new class extends Migration
             $table->integer('jml_barang');
             $table->String('tggl_pinjam');
             $table->String('tggl_kembali');
-            $table->string('deskripsi');
+            $table->string('deskripsi')->nullable();
             $table->binary('bukti')->nullable();
+            $table->integer('petugas_id');
             $table->timestamps();
 
         });

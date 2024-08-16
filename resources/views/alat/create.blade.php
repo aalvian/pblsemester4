@@ -29,6 +29,9 @@
                         <div class="form-group">
                             <label for="stok" style="font-weight: bold;"> Stok</label>
                             <input type="number" name="stok" id="stok" class="form-control" placeholder="Masukkan Stok" required>
+                            @error('stok')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="tggl_masuk" style="font-weight: bold;"> Tanggal Masuk</label>

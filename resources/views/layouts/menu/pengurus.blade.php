@@ -1,7 +1,3 @@
-
-
-
-
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item @if (request()->routeIs('pendaftaran', 'detail-terima', 'detail-tolak', 'detail-pendaftaran')) active @endif">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
@@ -18,10 +14,16 @@
     </div>
 </li>
 
-<li class="nav-item @if (request()->routeIs('alat', 'create-alat', 'edit-alat')) active @endif">
-    <a class="nav-link" href="{{ route('alat') }}">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Alat</span></a>
+<li class="nav-item @if (request()->routeIs('aktif-presensi')) active @endif">
+    <a class="nav-link" href="{{ route('aktif-presensi') }}">
+        <i class="fas fa-fw fa-calendar-check"></i>
+        <span>Aktifasi</span></a>
+</li>
+
+<li class="nav-item @if (request()->routeIs('data-presensi')) active @endif">
+    <a class="nav-link" href="{{ route('data-presensi') }}">
+        <i class="fas fa-fw fa-clipboard-list"></i>
+        <span>Data Presensi</span></a>
 </li>
 
 

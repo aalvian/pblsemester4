@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('divisis', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->boolean('aktifasi')->default(0);
+            $table->time('tenggat')->nullable();
             $table->timestamps();
         });
     }

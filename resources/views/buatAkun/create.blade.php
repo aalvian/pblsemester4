@@ -52,7 +52,8 @@
 
 
                                         <td class="text-center" style="width: 9%;">
-                                            <a href="{{ route('detail-pengurus', $item->id) }}"
+                                        @php $id = Crypt::encrypt($item->id); @endphp
+                                            <a href="{{ route('detail-pengurus', $id) }}"
                                                 class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> Detail</a>
 
                                         </td>

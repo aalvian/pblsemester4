@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Alat;
 use App\Models\Peminjaman;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+// ...
+
 
 class PeminjamanController extends Controller
 {
@@ -26,6 +31,7 @@ class PeminjamanController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::id();
         // Lakukan validasi
         $this->validate($request, [
             'nama' => 'required|string|max:255',
@@ -43,6 +49,7 @@ class PeminjamanController extends Controller
             $alat->stok -= $request->jml_barang;
             $alat->save();
 
+           
             $peminjaman = Peminjaman::create([
                 'nama' => $request->nama,
                 'nim' => $request->nim,
@@ -50,12 +57,10 @@ class PeminjamanController extends Controller
                 'nama_barang' => $request->nama_barang,
                 'jml_barang' => $request->jml_barang,
                 'tggl_pinjam' => $request->tggl_pinjam,
+                'petugas_id' => $user,
             ]);
 
             if($peminjaman) {
-                $user = auth()->user();
-                $logName = $user->name;
-                activity()->inLog($logName)->log($logName.'melakukan peminjaman atas nama'.$request->nama);
                 return redirect()->route('peminjaman')->with('success', 'Peminjaman berhasil dibuat');
             }
         } else {

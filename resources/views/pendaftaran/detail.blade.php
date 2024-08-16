@@ -25,12 +25,13 @@
                                 <td>: {{ $detail->nama }}</td>
                                 <td>CV</td>
                                 <td>:
-                                    @if ($detail->cv)
-                                        <img src="data:image/png;base64, {{ $detail->cv }}" alt="Gambar dari Base64"
-                                            style="max-width: 200px; max-height: 200px;">
-                                    @else
-                                        Tidak ada cv
-                                    @endif
+                                <td>
+                                @if ($detail->cv)
+                                <img src="{{ asset('storage/cv/' . $detail->cv) }}" alt="Gambar tidak ada" style="max-width: 200px; max-height: 200px;">
+                                @else
+                                Tidak ada bukti
+                                @endif
+                            </td>
                                 </td>
                             </tr>
 

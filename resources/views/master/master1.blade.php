@@ -47,7 +47,6 @@
 
     @include('partials.script')
 
-
     @if ($message = Session::get('succes'))
     <script>
         Swal.fire({
@@ -59,8 +58,6 @@
       });
     </script>
     @endif
-
-
 
 </body>
 

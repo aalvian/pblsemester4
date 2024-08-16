@@ -20,6 +20,7 @@ class BuatAkunController extends Controller
     }
 
     public function detail($id){
+        $id = decrypt($id);
         $detail = Pendaftaran::where('id', $id)->first();
         return view('buatAkun.detail', compact('detail'));
     }

@@ -23,6 +23,7 @@ class DashboardController extends Controller
 
         $persentaseTerima = ($pendaftarTerima / $totalPendaftar) * 100;
         $persentaseTolak = ($pendaftarTolak / $totalPendaftar) * 100;
+        
 
         // dd(auth()->user()->getRoleNames());
 

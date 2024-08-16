@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Presensi extends Model
 {
     use HasFactory;
-    
-
+    protected $fillable = [
+        'nama',
+        'nim',
+        'divisi',
+        'tanggal',
+        'bukti',
+    ];
 }
-// public function jadwal()
-//     {
-//         return $this->hasMany(Jadwal::class);
-//     }

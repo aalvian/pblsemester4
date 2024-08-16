@@ -51,25 +51,12 @@
 
     @include('partials.script')
 
-
     @if ($message = Session::get('succes'))
     <script>
         Swal.fire({
         position: "top-center",
         icon: "success",
         title: "Kamu Berhasil Login",
-        showConfirmButton: false,
-        timer: 1500
-      });
-    </script>
-    @endif
-
-    @if ($message = Session::get('success'))
-    <script>
-        Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Kamu Berhasil Login Sebagai Admin",
         showConfirmButton: false,
         timer: 1500
       });
@@ -87,8 +74,6 @@
       });
     </script>
     @endif
-
-
 
 </body>
 

@@ -30,8 +30,10 @@ class AlatController extends Controller
 
         $this->validate($request, [
             'nama_barang' => 'required',
-            'stok' => 'required',
+            'stok' => 'required|integer|min:0',
             'tggl_masuk' => 'required'
+        ],[
+            'stok.min'=>'stok tidak boleh minus'
         ]);
 
         Alat::create([
@@ -46,8 +48,9 @@ class AlatController extends Controller
     }
 
 
-    public function edit(string $id)
+    public function edit($id)
     {
+        $id = decrypt($id);
         $alat = Alat::findOrFail($id);
         return view('alat.edit', compact('alat'));
     }
@@ -56,6 +59,13 @@ class AlatController extends Controller
     public function update(Request $request, string $id)
     {
         $alat = Alat::findOrFail($id);
+        $this->validate($request, [
+            'nama_barang' => 'required',
+            'stok' => 'required|integer|min:0',
+            'tggl_masuk' => 'required'
+        ],[
+            'stok.min'=>'stok tidak boleh minus'
+        ]);
         $alat->update($request->all());
         $user = auth()->user();
         $logName = $user->name;
