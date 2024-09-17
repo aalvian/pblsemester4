@@ -15,6 +15,6 @@ class Alat extends Model
         'id',
         'nama_barang',
         'stok',
-        'tggl_masuk'
+        'tggl_masuk',
     ];
 }
