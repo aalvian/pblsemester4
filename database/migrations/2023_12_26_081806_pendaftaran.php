@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('divisi_1');
             $table->string('divisi_2')->nullable()->default(null);
             $table->enum('jabatan', ['Ketua', 'Wakil Ketua', 'Skeretaris', 'Bendahara', 'Anggota'])->default('Anggota');
+            $table->string('jabatan_2')->nullable();
             $table->string('status')->default('menunggu');
             $table->timestamps();
         });

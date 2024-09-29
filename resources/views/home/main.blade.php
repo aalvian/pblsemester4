@@ -18,6 +18,8 @@
                     <h1>Website UKM Olahraga Politeknik Negeri Banyuwangi</h1>
                     <p>AUTHOR :</p>
                     <p>UKM Olahraga</p>
+                    <a href="{{ route('create-pendaftaran') }}" class="btn btn-primary btn-sm ml-auto"><i class="fas fa-plus"></i>
+                    Daftar Sekarang</a>
                 </div>
             </div>
             <img src="{{ asset('image/pembuatan-website-olahraga.png') }}" alt="" class="accent-img position-absolute start-0 w-100" style="top:80px;">

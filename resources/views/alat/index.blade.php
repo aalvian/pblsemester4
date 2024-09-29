@@ -43,9 +43,9 @@
                                             action="{{ route('delete-alat', $item->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-
-                                            <a href="{{ route('edit-alat', $item->id) }}" {{ $item->id }}
-                                                class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Edit</a>
+                                            @php $id = Crypt::encrypt($item->id); @endphp
+                                            <a href="{{ route('edit-alat', $id) }}" {{ $item->id }} 
+                                                class="btn btn-sm btn-primary" ><i class="fas fa-edit"></i> Edit</a>
 
                                             <button type="submit" class="btn btn-sm btn-danger"><i
                                                     class="fas fa-trash-alt"></i> Hapus</button>

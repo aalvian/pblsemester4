@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -19,14 +20,21 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+       'name',
         'nim',
         'prodi',
         'role',
+        'current_role_id',
         'gambar',
         'email',
         'password',
+        'remember_token',
     ];
+
+    public function currentRole()
+    {
+        return $this->belongsTo(Role::class, 'current_role_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

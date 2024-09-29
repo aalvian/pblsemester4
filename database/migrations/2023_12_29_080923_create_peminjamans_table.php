@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('jml_barang');
             $table->string('tggl_pinjam');
             $table->binary('bukti')->nullable();
+            $table->integer('petugas_id');
             $table->timestamps();
         });
     }

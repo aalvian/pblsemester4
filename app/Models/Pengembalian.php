@@ -13,6 +13,7 @@ class pengembalian extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         'id',
+        'id_peminjaman',
         'nama',
         'nim',
         'prodi',
@@ -20,7 +21,12 @@ class pengembalian extends Model
         'jml_barang',
         'tggl_pinjam',
         'tggl_kembali',
+        'status',
         'image',
-        'deskripsi',
+        'petugas_id'
     ];
+    public function petugas()
+    {
+        return $this->belongsTo(User::class, 'petugas_id');
+    }
 }

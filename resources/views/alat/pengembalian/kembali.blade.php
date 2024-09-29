@@ -1,6 +1,14 @@
 @extends('master.main')
 @section('title', 'Pengembalian Alat')
 @section('content')
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.querySelector('input[name="tggl_kembali"]');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+    });
+</script>
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Form Pengembalian Alat</h1>
     <div class="card shadow mb-4">
@@ -10,27 +18,26 @@
         <div class="card-body">
             <div class="table-responsive">
                 <form action="{{ route('simpan-kembali') }}" method="POST" enctype="multipart/form-data">
+
                     @csrf
+                    <input type="hidden" name="id" value="{{ $peminjaman->id }}">
 
                     <div class="form-group">
-                        <label for="nama_barang">Pilih Barang yang Dikembalikan</label>
-                        <select name="nama_barang" class="form-control">
-                            @foreach ($alat as $item)
-                            <option value="{{ $item->nama_barang }}">{{ $item->nama_barang }}</option>
-                            @endforeach
-                        </select>
+                        <label for="nama_barang">Barang yang Dikembalikan</label>
+                        <input type="text" name="nama_barang" class="form-control" value="{{ $alat->nama_barang }}" readonly>
                     </div>
-
                     <div class="form-group">
-                        <label for="jml_barang">Jumlah Barang yang Dikembalikan</label>
-                        <input type="number" name="jml_barang" class="form-control" required>
+                        <label for="jml_barang">Jumlah Barang</label>
+                        <input type="text" name="jml_barang" class="form-control" value="{{ $peminjaman->jml_barang }}" readonly>
                     </div>
-
+                    <div class="form-group">
+                        <label for="tggl_pinjam">Tanggal Pinjam</label>
+                        <input type="text" name="tggl_pinjam" class="form-control" value="{{ $peminjaman->tggl_pinjam }}" readonly>
+                    </div>
                     <div class="form-group">
                         <label for="tggl_kembali">Tanggal Kembali</label>
                         <input type="date" name="tggl_kembali" class="form-control" required>
                     </div>
-
                     <div class="form-group">
                         <label for="status">Status Barang</label>
                         <select name="status" class="form-control" required>
@@ -40,18 +47,16 @@
                             <option value="Hilang">Hilang</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="image">Upload Bukti Pengembalian</label>
-                        <input type="file" name="image" class="form-control-file" required>
+                        <input type="file" name="image" class="form-control-file">
                     </div>
-
-
                     <button type="submit" class="btn btn-primary">Kembalikan Alat</button>
                 </form>
+
             </div>
         </div>
     </div>
 </div>
 @include('sweetalert::alert')
-@endsection 
+@endsection

@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
     <!-- Sidebar Toggle (Topbar) -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
@@ -20,12 +19,12 @@
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
-
         {{-- Garis Pembatas --}}
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
+            <!-- bagian yang dihapus -->
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
@@ -36,12 +35,28 @@
                     <img class="img-profile rounded-circle" src="{{ asset('template/img/undraw_profile.svg') }}">
                 @endif
             </a>
+
+            
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="{{ route('profile') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
+
+                <!-- bagian yang dihapus 2 -->
+                @if (auth()->user()->roles->count() > 1)
+                    @foreach (auth()->user()->roles->where('id', '!=', auth()->user()->current_role_id) as $role)
+                        <a class="dropdown-item" href="{{ route('switch.role', $role->id) }}">
+                            <i class="fas fa-exchange-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+
+                            {{ __('Switch :name', ['name' => $role->name]) }}
+                        </a>
+                    @endforeach
+                @endif
+
+
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -49,11 +64,8 @@
                 </a>
             </div>
         </li>
-
     </ul>
-
 </nav>
-
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

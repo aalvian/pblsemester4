@@ -6,13 +6,15 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800 mb-4">Tabel Anggota</h1>
+        <h1 class="h3 mb-2 text-gray-800 mb-4">Tabel Pengurus</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-
+                <a href="{{ route('create-pengurus') }}" class="btn btn-primary btn-sm ml-auto"><i class="fas fa-plus"></i>
+                    Tambah</a>
             </div>
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -24,15 +26,14 @@
                                 <th>Prodi</th>
                                 <th>Divisi 1</th>
                                 <th>Divisi 2</th>
-                                <th>Jabatan 1</th>
-                                <th>Jabatan 2</th>
                                 <th>Aksi</th>
+
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($dtAnggota as $item)
-                                @if ($item->status == 'terima')
+                            @foreach ($dtPengurus as $item)
+                                @if ($item->jabatan_2 == 'pengurus')
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->nama }}</td>
@@ -46,13 +47,10 @@
                                                 tidak memilih
                                             @endif
                                         </td>
-                                        <td>{{ $item->jabatan }}</td>
-                                        <td>{{ $item->jabatan_2 }}</td>
 
                                         <td class="text-center" style="width: 9%;">
-                                            <a href="{{ route('detail-pengurus', $item->id) }}"
-                                                class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> Detail</a>
-
+                                            <a href="{{ route('delete-pengurus', $item->id) }}"
+                                                class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</a>
                                         </td>
                                     </tr>
                                 @endif

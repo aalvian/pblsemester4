@@ -48,9 +48,10 @@
                                         <td>{{ $item->jabatan }}</td>
 
                                         <td class="text-center" style="width: 9%;">
-                                            <a href="{{ route('detail-pendaftaran', $item->id) }}"
+                                        @php $id = Crypt::encrypt($item->id); @endphp
+                                            <a href="{{ route('detail-pendaftaran', $id) }}"
                                                 class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> Detail</a>
-                                            {{-- <a href="{{ route('edit-pendaftaran', $item->id) }}"
+                                            {{-- <a href="{{ route('edit-pendaftaran', $id) }}"
                                                 class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a> --}}
                                         </td>
                                     </tr>

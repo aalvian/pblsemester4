@@ -51,7 +51,6 @@
 
     @include('partials.script')
 
-
     @if ($message = Session::get('succes'))
     <script>
         Swal.fire({
@@ -64,7 +63,17 @@
     </script>
     @endif
 
-
+    @if ($message = Session::get('sukses'))
+    <script>
+        Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Berhasil Swith Akun",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    </script>
+    @endif
 
 </body>
 

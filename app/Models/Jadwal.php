@@ -18,9 +18,10 @@ class Jadwal extends Model
         'waktu_selesai',
         'divisi_id'
     ];
-    
+
     public function divisi()
     {
         return $this->belongsTo(Divisi::class);
     }
+
 }

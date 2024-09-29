@@ -27,10 +27,12 @@
                         </div>
                         <span>Terus pantau kegiatan penerimaan anggota baru Ukm Olahraga <br>Politeknik Negeri
                             Banyuwangi</span>
+                        @role('pengurus')
                         <div class="text-right">
                             <a href="{{ route('pendaftaran') }}" class="btn btn-primary">
                                 Lihat pendaftar</a>
                         </div>
+                        @endrole
 
                     </div>
                 </div>
@@ -98,7 +100,7 @@
                                                     <div class="progress-bar bg-success" role="progressbar"
                                                         style="width: {{ $persentaseTerima }}%"
                                                         aria-valuenow="{{ $persentaseTerima }}" aria-valuemin="0"
-                                                        aria-valuemax="1000">
+                                                        aria-valuemax="100">
                                                     </div>
                                                 </div>
                                             </div>

@@ -28,7 +28,7 @@
                                 <th>Barang</th>
                                 <th>Jumlah Barang</th>
                                 <th>Tanggal Pinjam</th>
-                                <th>Foto Alat</th>
+                                <th>Petugas</th>
                                  <th>Aksi</th>
                             </tr>
                         </thead>
@@ -43,18 +43,10 @@
                                     <td>{{ $item->nama_barang }}</td>
                                     <td>{{ $item->jml_barang }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tggl_pinjam)) }}</td>
-
-                                    <td>
-                                    @if ($item->bukti)
-                                        <img src="data:image/png;base64, {{ $item->bukti }}" alt="Gambar dari Base64"
-                                            style="max-width: 200px; max-height: 200px;">
-                                    @else
-                                        Tidak ada cv
-                                    @endif
-                                </td>
+                                    <td>{{ $item->petugas ? $item->petugas->name : 'N/A' }}</td>
 
                                     <td class="text-center" style="width: 15%;">
-                                        <form action="{{ route('create-kembali', $item->id) }}" onsubmit="return confirm('Apakah Anda Yakin Mengembalikan?');">
+                                        <form action="{{ route('create-kembali', $item->id) }}">
                                             @csrf
                                             <button type="submit" class="btn btn-sm btn-primary">
                                                 <i class="bi bi-arrow-return-left"></i> Kembalikan

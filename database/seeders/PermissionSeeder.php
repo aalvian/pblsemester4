@@ -36,23 +36,27 @@ class PermissionSeeder extends Seeder
         $role_admin -> givePermissionTo($permission2);
         $role_admin -> givePermissionTo($permission3);
         $role_admin -> givePermissionTo($permission8);
+        $role_admin -> givePermissionTo($permission5);
 
         $role_pengurus -> givePermissionTo($permission);
         $role_pengurus -> givePermissionTo($permission4);
         $role_pengurus -> givePermissionTo($permission5);
-
+        
+        
         $role_anggota -> givePermissionTo($permission6);
         $role_anggota -> givePermissionTo($permission7);
-
+        
         ////////////////////////////////////////////////////////////////////////////
 
         $user  = User::find(1); //yg ada pada table user nomer 1
         $user2 = User::find(2);
-        $user3 = User::find(3);
+        // $user3 = User::find(3);
+        // $user4 = User::find(4);
 
         $user->assignRole('admin');
-        $user2->assignRole('pengurus');
-        $user3->assignRole('anggota');
+        // $user2->assignRole('pengurus');
+        // $user3->assignRole('anggota');
+        $user2->assignRole('anggota', 'pengurus');
         // $user->assignRole('admin', 'anggota'); // kalau 1 user 2 role
     }
 }

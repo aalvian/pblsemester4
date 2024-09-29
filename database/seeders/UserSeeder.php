@@ -22,18 +22,18 @@ class UserSeeder extends Seeder
             'email' => 'admin@ukmolahraga.com',
             'password' => bcrypt('admin'),
             'remember_token' => Str::random(60),
-            
+
         ]);
 
-        User::create([
-            'name' => 'root',
-            'nim' => '362258302222',
-            'prodi' => 'TRPL',
-            'role' => 'pengurus',
-            'email' => 'root@email.com',
-            'password' => bcrypt('root'),
-            'remember_token' => Str::random(60),
-        ]);
+        // User::create([
+        //     'name' => 'root',
+        //     'nim' => '362258302222',
+        //     'prodi' => 'TRPL',
+        //     'role' => 'pengurus',
+        //     'email' => 'root@email.com',
+        //     'password' => bcrypt('root'),
+        //     'remember_token' => Str::random(60),
+        // ]);
 
         User::create([
             'name' => 'Anggota',
@@ -44,6 +44,16 @@ class UserSeeder extends Seeder
             'password' => bcrypt('anggota'),
             'remember_token' => Str::random(60),
         ]);
+
+        // User::create([
+        //     'name' => 'AnggotaPengurus',
+        //     'nim' => '362258302000',
+        //     'prodi' => 'TRPL',
+        //     'role' => 'anggota',
+        //     'email' => 'anggota@pengurus.com',
+        //     'password' => bcrypt('123'),
+        //     'remember_token' => Str::random(60),
+        // ]);
 
 
     }
