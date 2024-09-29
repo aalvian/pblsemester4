@@ -21,8 +21,8 @@ class pengembalian extends Model
         'jml_barang',
         'tggl_pinjam',
         'tggl_kembali',
+        'status',
         'image',
-        'deskripsi',
         'petugas_id'
     ];
     public function petugas()

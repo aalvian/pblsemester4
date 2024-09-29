@@ -41,7 +41,7 @@
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div data-mdb-input-init class="form-outline">
-                        <label class="form-label" for="form3Example1m" style="font-weight: bold;">Nama</label>
+                        <label class="form-label" for="form3Example1m" style="font-weight: bold;">Nama Lengkap</label>
                         <input type="text" id="form3Example1m" class="form-control form-control-lg" name="nama" />
                         @if ($errors->has('nama'))
                           <div class="text-danger">{{ $errors->first('nama') }}</div>
@@ -51,7 +51,7 @@
                     <div class="col-md-6 mb-4" style="font-weight: bold;">
                       <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="form3Example1n">Nim</label>
-                        <input type="number" id="nim" class="form-control form-control-lg" name='nim' min='12' />
+                        <input type="text" id="nim" class="form-control form-control-lg" inputmode="numeric" pattern="[0-9]*" name='nim' maxlength='12' />
                       </div>
                     </div>
                   </div>
@@ -96,7 +96,7 @@
 
                   <div data-mdb-input-init class="form-outline mb-4">
                     <label class="form-label" for="no_telp" style="font-weight: bold;">No Telphone</label>
-                    <input type="number" id="no_telp" class="form-control form-control-lg" name="no_telp"/>
+                    <input type="text" id="no_telp" class="form-control form-control-lg" name="no_telp"/>
                   </div>
 
                   <div class="row">
@@ -141,5 +141,18 @@
     </div>
   <!-- </div> -->
 <!-- </section> -->
+
+<script>
+  document.getElementById('nim').addEventListener('keydown', function (e) {
+      if (!((e.key >= '0' && e.key <= '9') || ['Backspace', 'Delete', 'Tab', 'Enter'].includes(e.key))) {
+          e.preventDefault();
+      }
+  });
+  document.getElementById('no_telp').addEventListener('keydown', function (e) {
+      if (!((e.key >= '0' && e.key <= '9') || ['Backspace', 'Delete', 'Tab', 'Enter'].includes(e.key))) {
+          e.preventDefault();
+      }
+  });
+</script>
 </body>
 </html>

@@ -142,6 +142,7 @@
                             @if($currentDate >= $pembukaan2 && $currentDate <= $penutupan2 && $status2==1) <a class="bg-customColor-hijau text-white px-4 py-2 rounded mr-2" href="{{ route('create-pendaftaran2') }}">Daftar</a>
                                 @endif
                         </div>
+                
         </div>
     </div>
 

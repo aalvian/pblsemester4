@@ -28,12 +28,12 @@
 
                         <tbody>
                             @foreach ($dtPresensi as $item)
-                                <tr>
+                                <tr class="data">
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->nim }}</td>
-                                    <td>{{ $item->divisi }}</td>
-                                    <td>{{$item->tanggal}}</td>
+                                    <td class="nama">{{ $item->nama }}</td>
+                                    <td class="nim">{{ $item->nim }}</td>
+                                    <td class="divisi">{{ $item->divisi }}</td>
+                                    <td class="tanggal">{{$item->tanggal}}</td>
 
                                     <td>
                                     @if ($item->bukti)

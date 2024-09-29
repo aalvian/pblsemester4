@@ -15,7 +15,6 @@
             dateInput.setAttribute('min', today);
         });
 
-
     </script>
  <div class="container-fluid">
      <h1 class="h3 mb-4 text-gray-800">Create Pinjam Alat</h1>
@@ -30,12 +29,12 @@
 
 
                      <div class="form-group">
-                         <label for="nama">Nama</label>
+                         <label for="nama">Nama Peminjam</label>
                          <input type="text" name="nama" class="form-control" required>
                      </div>
                      <div class="form-group">
                          <label for="nim">Nim</label>
-                         <input type="text" name="nim" maxlength="12" class="form-control" required>
+                         <input type="text" id="nim" name="nim" maxlength="12" inputmode="numeric" pattern="[0-9]*" class="form-control" required>
                      </div>
                      <div class="form-group">
                          <label for="prodi">Prodi</label>
@@ -81,5 +80,12 @@
          </div>
      </div>
  </div>
+ <script>
+    document.getElementById('nim').addEventListener('keydown', function (e) {
+            if (!((e.key >= '0' && e.key <= '9') || ['Backspace', 'Delete', 'Tab', 'Enter'].includes(e.key))) {
+                e.preventDefault();
+            }
+        });
+ </script>
  @include('sweetalert::alert')
  @endsection

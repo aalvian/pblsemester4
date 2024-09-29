@@ -172,11 +172,6 @@ class PendaftaranController extends Controller
     }
 
 
-
-
-
-
-
     public function timeLine(){
         $dtTimeLine1 = timeLine::find(1);
         $dtTimeLine2 = timeLine::find(2);

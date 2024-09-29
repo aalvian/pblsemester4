@@ -158,12 +158,11 @@ Route::post('/verifikasi/{token}', [LoginController::class, 'verifikasi'])->name
 // *** PRESENSI *** //
 Route::get('/presensi', [PresensiController::class, 'index'])->name(    'view-presensi');
 Route::post('presensi/store',[PresensiController::class, 'store'])->name('store-presensi');
-
+Route::get('/data/presensi', [PresensiController::class, 'view'])->name('data-presensi');
 Route::get('aktifasi/presensi',[PresensiController::class, 'activatePresensiView'])->name('aktif-presensi');
 Route::post('/toggle-status', [PresensiController::class, 'toggleStatus'])->name('toggle-status');
 Route::get('/get-status', [PresensiController::class, 'getStatus'])->name('get-status');
 
-Route::get('/data/presensi', [PresensiController::class, 'view'])->name('data-presensi');
 
 
 

@@ -57,7 +57,7 @@ class PengembalianController extends Controller
         $user = Auth::id(); // Ambil ID pengguna yang sedang login
     
         $pengembalian = Pengembalian::create([
-            'id_peminjaman' => $peminjaman->id,
+            'id' => $peminjaman->id,
             'nama' => $peminjaman->nama,
             'nim' => $peminjaman->nim,
             'prodi' => $peminjaman->prodi,

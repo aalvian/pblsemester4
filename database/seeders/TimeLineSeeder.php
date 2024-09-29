@@ -15,14 +15,14 @@ class TimeLineSeeder extends Seeder
     {
         //
         timeLine::create([
-            'nama' => 'gelombang_1',
+            'nama' => 'Gelombang Pertama',
             'waktu_mulai'=>'2024-01-01',
             'waktu_berakhir'=>'2024-02-02',
             'status'=>0,
         ]);
 
         timeLine::create([
-            'nama' => 'gelombang_2',
+            'nama' => 'Gelombang Kedua',
             'waktu_mulai'=>'2024-01-01',
             'waktu_berakhir'=>'2024-02-02',
             'status'=>0,
